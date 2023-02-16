@@ -8,12 +8,10 @@ const routes: Routes = [
   {
     path: 'quiz',
     loadChildren: () => import('./quiz/quiz.module').then((m) => m.QuizModule),
-    canActivate: [AuthGaurd],
   },
   {
     path: 'auth',
     loadChildren: () => import('./Auth/auth.module').then((m) => m.AuthModule),
-    canActivate: [AuthGaurd],
   },
   {
     path: 'fill/:id',
