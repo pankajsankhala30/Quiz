@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { AuthGaurd } from '../Auth/auth.gaurd';
 import { ResultComponent } from '../result/result.component';
 import { AddQuizComponent } from './add-quiz/add-quiz.component';
 import { QuizListComponent } from './quiz-list/quiz-list.component';
@@ -10,19 +11,21 @@ import { ViewQuizComponent } from './view-quiz/view-quiz.component';
 const routes: Routes = [
   {
     path: '',
-    component: QuizComponent
+    component: QuizComponent,
   },
   {
     path: 'list',
-    component: QuizComponent
+    component: QuizComponent,
   },
   {
     path: 'add',
     component: AddQuizComponent,
+
   },
   {
     path: 'view/:id',
     component: ViewQuizComponent,
+
   },
   {
     path: 'fill/:id',

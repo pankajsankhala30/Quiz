@@ -50,7 +50,12 @@ export class AuthComponent implements OnInit {
           this.snackBar.open("account created successfully");
           this.route.navigate(['/auth/login']);
           this.isLoading = false;
-        } else {
+        } 
+        else if(res.statusCode === 409){
+          this.snackBar.open("email already exists");
+        }
+        
+        else {
           this.snackBar.open("error", 'X'
           );
         }

@@ -54,7 +54,7 @@ export let login = async (req: any, res: any) => {
         }
 
         return res.status(200).send(responseBody);
-    } catch (err: any) {
+    } catch (err) {
         res.status(500).send('Server Error');
     }
 }

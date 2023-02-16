@@ -1,7 +1,7 @@
 import * as express from "express";
 import * as cors from "cors"
 import * as quizController from "./controllers/quizController";
-import * as creatorController from "./controllers/createrController";
+import * as creatorController from "./controllers/creatorController";
 import * as userController from "./controllers/userController";
 import * as answerController from "./controllers/answerController";
 import * as database from "./database";
@@ -20,7 +20,7 @@ app.use(express.json());
 app.use(cors());
 app.set("port", process.env.PORT || 3000);
 // API Endpoints
-app.get('/', (req, res) => {
+app.get('/', (req:any, res:any) => {
   res.send('Hello World!')
 })
 app.get("/quiz/all", quizController.getAllQuizes);

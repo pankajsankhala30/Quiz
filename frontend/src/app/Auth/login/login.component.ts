@@ -38,19 +38,27 @@ export class LoginComponent implements OnInit {
     })
   }
 
-  submitForm() {
+ submitForm() {
     if (this.formGroup.valid) {
       const creatorData: CREATOR_LOGIN = {
         password: this.form.password.value,
         email: this.form.email.value
       }
       this.isLoading = true;
-      this.creatorService.loginCreator(creatorData).subscribe((res) => {
+     this.creatorService.loginCreator(creatorData).subscribe( (res) => {
         if (res.statusCode === 200) {
-          this.localstorageService.store("accountid", res.accountid)
+           this.localstorageService.store("accountid", res.accountid)
           this.route.navigate(['/quiz']);
-          this.isLoading = false;
-        } else {
+        } 
+        else if (res.statusCode === 404) {
+          this.snackBar.open("email id does not exist", 'X'
+          );
+        }
+        else if (res.statusCode === 401) {
+          this.snackBar.open("password is not correct", 'X'
+          );
+        }
+        else {
           this.snackBar.open("error", 'X'
           );
         }

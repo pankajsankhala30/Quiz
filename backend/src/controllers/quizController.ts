@@ -9,7 +9,7 @@ export let getAllQuizes = (req: any, res: any) => {
     }
     const accountid = cryptoController.decrypt(accountId)
 
-    Quiz.find({ accountid: accountid }, (err: any, quizes: any) => {
+    Quiz.find({ accountid: accountid },{accountid:0}, (err: any, quizes: any) => {
         if (err) {
             res.send("Error!");
         } else {

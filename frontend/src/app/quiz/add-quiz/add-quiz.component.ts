@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { FormGroup, FormArray, FormBuilder, FormControl, Validators } from "@angular/forms";
 import { Router } from "@angular/router";
+import { ADD_QUIZ } from "src/app/Shared/modal/quiz.modal";
 import { QuizService } from "src/app/Shared/Service/quiz.service";
 import { SnacbarService } from "src/app/Shared/Service/snacbar.service";
 
@@ -10,8 +11,6 @@ import { SnacbarService } from "src/app/Shared/Service/snacbar.service";
   styleUrls: ['./add-quiz.component.scss']
 })
 export class AddQuizComponent implements OnInit {
-  title = "Nested FormArray Example Add Form Fields Dynamically";
-
   empForm: FormGroup;
 
   constructor(private fb: FormBuilder, private quizService: QuizService, private snackBar: SnacbarService,
@@ -67,14 +66,20 @@ export class AddQuizComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.empForm.value);
     if (this.empForm.valid) {
-      this.quizService.addQuiz(this.empForm.value).subscribe((res) => {
+      if(this.validateQuiz(this.empForm.value)){
+         this.quizService.addQuiz(this.empForm.value).subscribe((res) => {
         if (res.statusCode === 200) {
           this.router.navigate(['/quiz/list']);
           this.snackBar.open("Thank You for adding this quiz", 'X')
         }
       });
+      }
+      else{
+        this.snackBar.open("Please select at least one option correct and two option can not be same", 'X')
+
+      }
+           
     } else {
       this.snackBar.open("Please fill all the details", 'X'
       );
@@ -93,5 +98,34 @@ export class AddQuizComponent implements OnInit {
     console.log("value changed");
 
   }
+  validateQuiz(quiz: ADD_QUIZ) {
+    let valid = true;
+    for (const question of quiz.questions) {
+      let hasCorrectOption = false;
+      for (const option of question.options) {
+        if (option.isCorrect) {
+          hasCorrectOption = true;
+          break;
+        }
+      }
+      if (!hasCorrectOption) {
+        valid = false;
+        break;
+      }
+      let textSet = new Set<string>();
+      for (const option of question.options) {
+        if (textSet.has(option.text)) {
+          valid = false;
+          break;
+        }
+        textSet.add(option.text);
+      }
+      if (!valid) {
+        break;
+      }
+    }
+    return valid;
+  }
+  
 }
 

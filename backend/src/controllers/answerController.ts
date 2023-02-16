@@ -62,8 +62,7 @@ export let checkAnswers =(questions: any[], userAnswers: any[]): number=> {
     return score;
   }
   export let getResult = (req: any, res: any) => {
-    
-    Answer.find({ quizId: req.params.id }, (err: any, results: any) => {
+    Answer.find({ quizId: req.params.id }, { email: 1,username: 1,score: 1,answeredAt: 1,_id:0},(err: any, results: any) => {
         if (err) {
             res.send("Error!");
         } else {

@@ -36,6 +36,9 @@ this.getQuizById(this.route.snapshot.params['id'])
         this.currentIndex= 0;
         this.currentQuestionSet= this.questionsData[this.currentIndex]
       }
+      else{
+        this.snackBar.open("Please Refresh again", 'X')
+      }
     });
   }
 

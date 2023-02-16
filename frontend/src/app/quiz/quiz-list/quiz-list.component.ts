@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { QuizService } from 'src/app/Shared/Service/quiz.service';
+import { SnacbarService } from 'src/app/Shared/Service/snacbar.service';
 import { environment } from "../../../environments/environment";
 @Component({
   selector: 'app-quiz-list',
@@ -9,7 +10,7 @@ import { environment } from "../../../environments/environment";
 })
 export class QuizListComponent implements OnInit {
   quizesList = []
-  constructor(private quizService: QuizService,public route: Router) { }
+  constructor(private quizService: QuizService,public route: Router,private snackBar: SnacbarService,) { }
 
   ngOnInit(): void {
     this.getAllQuizes();
@@ -33,8 +34,8 @@ export class QuizListComponent implements OnInit {
     }
     this.quizService.deleteQuiz(ids).subscribe((res) => {
       if (res.statusCode === 200) {
+        this.snackBar.open('Quiz deleted successfully')
         this.getAllQuizes();
-
       }
     });
   }
@@ -50,5 +51,6 @@ export class QuizListComponent implements OnInit {
     elem.select();
     document.execCommand("copy");
     document.body.removeChild(elem);
+    this.snackBar.open('link copied')
   }
 }

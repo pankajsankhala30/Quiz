@@ -11,6 +11,7 @@ const routes: Routes = [
   {
     path: 'quiz',
     loadChildren: () => import('./quiz/quiz.module').then((m) => m.QuizModule),
+    canActivate:[AuthGaurd]
   },
   {
     path: 'auth',

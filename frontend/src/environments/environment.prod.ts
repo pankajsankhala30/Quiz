@@ -1,5 +1,5 @@
 export const environment = {
   apiDomain: 'https://fibr-com.onrender.com',
-  urlDomain:'http://localhost:4200',
+  urlDomain:'https://fibr-c00a6.web.app',
   production: true
 };
