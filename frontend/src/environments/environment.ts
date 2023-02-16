@@ -4,7 +4,7 @@
 
 export const environment = {
 
-  apiDomain: 'http://localhost:3000',
+  apiDomain: 'https://fibr-com.onrender.com',
   urlDomain:'http://localhost:4200',
   production: false,
 };

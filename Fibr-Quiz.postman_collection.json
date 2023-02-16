@@ -1,0 +1,168 @@
+{
+	"info": {
+		"_postman_id": "e5059600-aeff-4906-b1fe-fb961ff69e0f",
+		"name": "Fibr-Quiz",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "7654806"
+	},
+	"item": [
+		{
+			"name": "getAllQuizes",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "accountid",
+						"value": "U2FsdGVkX19CpgEWsCh9r9arPB/oeV2yqmvovbqofnk=",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{fibrapi}}/quiz/all",
+					"host": [
+						"{{fibrapi}}"
+					],
+					"path": [
+						"quiz",
+						"all"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getQuizDetails",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "getQuestions",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "addAQuiz",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "updateAQuiz",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "deleteAQuiz",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "bulkDeleteQuiz",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "getResultOfAQuiz",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "creatorSignUp",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "userSignUp",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "creatorLogin",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "userLogin",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"pankjjasasj4@yopmail.com\",\n    \"password\": \"Test@123\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{fibrapi}}/creator/login",
+					"host": [
+						"{{fibrapi}}"
+					],
+					"path": [
+						"creator",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "answerAQuiz",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"pankjjasasj4@yopmail.com\",\n    \"password\": \"Test@123\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{fibrapi}}/creator/login",
+					"host": [
+						"{{fibrapi}}"
+					],
+					"path": [
+						"creator",
+						"login"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
