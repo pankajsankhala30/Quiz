@@ -6,7 +6,7 @@
       <button class="" mat-button (click)="onLogout()">Logout</button>
     </mat-toolbar>
   </div>
-<div class="container">
+<div *ngIf="results.length" class="container">
     <div class="row">
       <div class="col-10">
         <div class="jumbotron">
@@ -15,23 +15,29 @@
 <div class="example-container mat-elevation-z8">
     <mat-table #table [dataSource]="dataSource">
       <ng-container matColumnDef="username">
-        <mat-header-cell *matHeaderCellDef> username </mat-header-cell>
+        <mat-header-cell *matHeaderCellDef> Username </mat-header-cell>
         <mat-cell *matCellDef="let element"> {{element.username}} </mat-cell>
       </ng-container>
   
       <!-- Name Column -->
       <ng-container matColumnDef="email">
-        <mat-header-cell *matHeaderCellDef> email </mat-header-cell>
+        <mat-header-cell *matHeaderCellDef> Email </mat-header-cell>
         <mat-cell *matCellDef="let element"> {{element.email}} </mat-cell>
       </ng-container>
   
     
       <!-- Symbol Column -->
       <ng-container matColumnDef="score">
-        <mat-header-cell *matHeaderCellDef> score </mat-header-cell>
+        <mat-header-cell *matHeaderCellDef> Score </mat-header-cell>
         <mat-cell *matCellDef="let element"> {{element.score}} </mat-cell>
       </ng-container>
   
+      <ng-container matColumnDef="answeredAt">
+        <mat-header-cell *matHeaderCellDef> Answered at </mat-header-cell>
+        <mat-cell *matCellDef="let element">  {{ element.answeredAt | date: "dd LLL yyyy" }}
+          at 
+          {{element.answeredAt | date: "h:mm a" }}  </mat-cell>
+      </ng-container>
       <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
       <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
     </mat-table>
@@ -39,4 +45,8 @@
 </div>
 </div>
 </div>
+</div>
+
+<div *ngIf="!results.length">
+  No results Found
 </div>

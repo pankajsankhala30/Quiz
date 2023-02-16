@@ -32,7 +32,7 @@ this.dataSource =  new MatTableDataSource(this.results);
     });
   }
 
-  displayedColumns = ['username', 'email',  'score'];
+  displayedColumns = ['username', 'email',  'score', 'answeredAt'];
   onLogout(){
     localStorage.clear()
 this.router.navigate([''])

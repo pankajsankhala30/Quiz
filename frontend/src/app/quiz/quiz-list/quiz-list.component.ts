@@ -44,6 +44,10 @@ export class QuizListComponent implements OnInit {
     this.route.navigate(['/quiz/view', id]);
 
   }
+  takeQuiz(id:string){
+    this.route.navigate(['/quiz/fill', id]);
+
+  }
   copyLink(id:string){
     var elem = document.createElement("textarea");
     document.body.appendChild(elem);
