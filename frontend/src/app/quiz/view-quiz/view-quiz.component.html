@@ -1,0 +1,30 @@
+<div>
+    <mat-toolbar color="primary">
+      <span> Fibr Quiz </span>
+      <span class="fill-remaining-space"></span>
+      <button class="cursor" mat-button routerLink="/quiz/list">Quiz List</button>
+      <button class="cursor" mat-button (click)="onLogout()">Logout</button>
+    </mat-toolbar>
+  </div>
+  <h2 class="card-title">{{quizData?.quiz_title}}</h2>
+
+<div class="row">
+    <div class="quiz-card col-sm-2" *ngFor="let question of questionsData; let i = index">
+        <div class="card">
+            <div class="card-body">
+               <p> Question {{ i +1 }}</p> 
+
+                <p class="card-text"> Question : {{question?.question}}</p>
+                <p> Options </p>
+                <div *ngFor="let option of question?.options">
+                    <span>{{option?.text}}</span>
+                <span *ngIf="option?.isCorrect"> Correct</span>
+                <span *ngIf="!option?.isCorrect"> Not correct</span>
+
+                </div>
+               
+
+            </div>
+        </div>
+    </div>
+</div>

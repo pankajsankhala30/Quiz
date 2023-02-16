@@ -1,0 +1,149 @@
+<div>
+  <mat-toolbar color="primary">
+    <span> Fibr Quiz </span>
+    <span class="fill-remaining-space"></span>
+    <button class="cursor" mat-button routerLink="/quiz/list">Quiz List</button>
+    <button class="" mat-button (click)="onLogout()">Logout</button>
+  </mat-toolbar>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-10">
+      <div class="jumbotron">
+        <h2>Fibr Quiz</h2>
+        <form [formGroup]="empForm" (ngSubmit)="onSubmit()">
+          <div>
+            <div class="form-group">
+              <label for="question">Quiz Title</label>
+              <input
+                type="text"
+                class="form-control"
+                formControlName="quiz_title"
+                required
+              />
+            </div>
+          </div>
+          <div formArrayName="questions">
+            <div
+              *ngFor="
+                let question of questions().controls;
+                let empIndex = index
+              "
+            >
+              <div
+                [formGroupName]="empIndex"
+                style="
+                  border: 1px solid blue;
+                  padding: 10px;
+                  width: 600px;
+                  margin: 5px;
+                "
+              >
+              <div class="Questions">
+                <div >
+                  <label for="question">Question Text</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    formControlName="question"
+                    required
+                  />
+                </div>
+                <div>
+                  <button
+                    class="button cursor"
+                    (click)="removeQuestion(empIndex)"
+                    mat-raised-button
+                    color="primary"
+                  >
+                    Remove this question
+                  </button>
+                </div>
+            </div>
+                <div formArrayName="options">
+                  <div
+                    *ngFor="
+                      let option of questionOptions(empIndex).controls;
+                      let questionIndex = index
+                    "
+                  >
+                    <div [formGroupName]="questionIndex">
+                        <div class="Questions">
+
+                       
+                        <div>
+
+                      <div class="form-group">
+                        <label for="text">Option Text</label>
+                        <input
+                          type="text"
+                          class="form-control"
+                          formControlName="text"
+                          required
+                        />
+                        <div class="invalid-feedback">
+                          <div>text is required</div>
+                        </div>
+                      </div>
+
+                      <mat-checkbox color="primary" formControlName="isCorrect">
+                        Check this if this option is correct
+                      </mat-checkbox>
+                    </div>
+<div>
+    <button
+    class="button cursor"
+    (click)="removeQuestionOption(empIndex, questionIndex)"
+    mat-raised-button
+    color="primary"
+  >
+    Remove this option
+  </button>
+</div>
+                     
+                    </div>
+                    </div>
+                  </div>
+
+                  <button
+                    class="button cursor"
+                    (click)="addQuestionOption(empIndex)"
+                    mat-raised-button
+                    type="button"
+                    color="primary"
+                  >
+                    Add Option
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <p>
+            <button
+              class="button cursor"
+              type="button"
+              (click)="addQuestion()"
+              mat-raised-button
+              color="primary"
+            >
+              Add Question
+            </button>
+            <button
+              class="button cursor"
+              type="submit"
+              mat-raised-button
+              color="primary"
+            >
+              Submit
+            </button>
+            <button  class="button cursor"
+            type="button"
+            mat-raised-button
+            color="primary" routerLink="/quiz/list">Cancel</button>
+
+          </p>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

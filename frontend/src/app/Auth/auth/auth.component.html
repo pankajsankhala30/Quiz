@@ -1,0 +1,59 @@
+<div class="container">
+    <div fxLayout="row" fxLayout.xs="column" fxLayoutAlign="center center" fxFlexFill="100%">
+        <mat-card fxFlex="70%" fxFlex.xs="100%" [class.mat-elevation-z5]="true" fxLayout.xs="column">
+            <div class="auth-left" fxFlex="50%" fxLayoutAlign="center center">
+                <img src="/assets/img/quiz.jpg" alt="" class="img-fluid">
+            </div>
+            <div class="auth-right" fxFlex="50%" fxLayoutAlign="center center">
+                <div class="form" fxFlex="80%">
+                    <mat-card-title>Welcome to Fibr Quiz</mat-card-title>
+                    <form class="auth-form" fxLayout="column" fxLayoutAlign="center" [formGroup]="formGroup"
+                        (ngSubmit)="submitForm()">
+                        <!-- firstname -->
+                        <mat-form-field appearance="outline">
+                            <mat-label>First Name</mat-label>
+                            <input matInput placeholder="FirstName" formControlName="firstname" type="text"
+                                autocomplete="off">
+                            <mat-icon matSuffix>person</mat-icon>
+                            <small *ngIf="form.firstname.touched">
+                                <mat-hint *ngIf="form.firstname.errors?.required">*This field is required.</mat-hint>
+                            </small>
+                        </mat-form-field>
+                        <mat-form-field appearance="outline">
+                            <mat-label>Last Name</mat-label>
+                            <input matInput placeholder="lastname" formControlName="lastname" type="text"
+                                autocomplete="off">
+                            <mat-icon matSuffix>person</mat-icon>
+                            <small *ngIf="form.lastname.touched">
+                                <mat-hint *ngIf="form.lastname.errors?.required">*This field is required.</mat-hint>
+                            </small>
+                        </mat-form-field>
+                        <!-- Email -->
+                        <mat-form-field appearance="outline">
+                            <mat-label>Email</mat-label>
+                            <input matInput placeholder="Email" formControlName="email" type="email" autocomplete="off">
+                            <mat-icon matSuffix>email</mat-icon>
+                            <small *ngIf="form.email.touched">
+                                <mat-hint *ngIf="form.email.errors?.required">*This field is required.</mat-hint>
+                                <mat-hint *ngIf="form.email.errors?.pattern">*Email id is invalid</mat-hint>
+                            </small>
+                        </mat-form-field>
+                        <mat-form-field appearance="outline">
+                            <mat-label>Password</mat-label>
+                            <input matInput placeholder="Password" formControlName="password" type="text"
+                                autocomplete="off">
+                            <mat-icon matSuffix>remove_red_eye</mat-icon>
+                            <small *ngIf="form.password.touched">
+                                <mat-hint *ngIf="form.password.errors?.required">*This field is required.</mat-hint>
+                            </small>
+                        </mat-form-field>
+                        <!-- Submit button -->
+                        <button class="button cursor" type="submit" mat-raised-button color="primary">Sign UP</button>
+                        <button class="button cursor" routerLink="/auth/login" mat-raised-button color="primary">Do you have a
+                            account</button>
+                    </form>
+                </div>
+            </div>
+        </mat-card>
+    </div>
+</div>

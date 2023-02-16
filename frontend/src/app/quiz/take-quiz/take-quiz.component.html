@@ -1,0 +1,56 @@
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-10">
+      <h2>Fibr Quiz</h2>
+      <div class="jumbotron">
+        <h3>{{quizData.quiz_title}} All Questions are mandatory</h3>
+
+        <div >
+          <mat-form-field class="user-fields" appearance="outline">
+            <mat-label>Email</mat-label>
+            <input matInput placeholder="Email" [(ngModel)]="email" type="email" required autocomplete="off">
+            <mat-icon matSuffix>email</mat-icon>
+            
+        </mat-form-field>
+        <mat-form-field class="user-fields" appearance="outline">
+          <mat-label>User Name</mat-label>
+          <input matInput placeholder="User Name" [(ngModel)]="username" required type="text" autocomplete="off">
+          <mat-icon matSuffix>person</mat-icon>
+          
+      </mat-form-field>
+        </div>
+       
+        <div class="well col-md-12">
+          <div class="col-md-8" >
+            <h3>  Question No - {{currentIndex +1 }}</h3>
+            <h3>{{currentQuestionSet.question}}</h3>
+            <div *ngFor="let option of currentQuestionSet?.options">
+              <div class="checkboxes">
+                <div class="button cursor"> <mat-checkbox class="btn-block" 
+                  (change)="showOptions($event,currentQuestionSet._id,option.text)">
+            </mat-checkbox></div>
+            <div class="button cursor"> {{option.text}}</div>
+              </div>
+            
+            </div>
+          </div>
+        </div>
+<button  class="button cursor"
+type="submit"
+mat-raised-button
+color="primary" *ngIf="currentIndex !== 0" (click)="previous()"> Previous</button>
+<button class="button cursor"
+type="submit"
+mat-raised-button
+color="primary" *ngIf="currentIndex != questionsData.length-1" (click)="next()"> Next</button>
+<button  class="button cursor"
+type="submit"
+mat-raised-button
+color="primary" (click)="submit()"> Submit</button>
+
+      </div>
+    </div>
+  </div>
+</div>

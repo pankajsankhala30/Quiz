@@ -1,0 +1,15 @@
+<div>
+    <mat-toolbar color="primary">
+        <span>
+            Fibr Quiz
+        </span>
+        <span class="fill-remaining-space"></span>
+        <button class="cursor" mat-button routerLink="/quiz/add">Add Quiz</button>
+
+        <button class="cursor" mat-button (click)="onLogout()">Logout</button>
+    </mat-toolbar>
+
+</div>
+<div>
+    <app-quiz-list></app-quiz-list>
+</div>

@@ -1,0 +1,18 @@
+<div class="row">
+    <div class="quiz-card col-sm-2" *ngFor="let quiz of quizesList">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">{{quiz?.quiz_title}}</h5>
+                <p class="card-text">No of Questions : {{quiz?.questions.length}}</p>
+                <a class="cursor"><i class="material-icons" (click)="deleteQuiz(quiz._id)">delete</i></a>
+                <a class="cursor"><i class="material-icons" (click)="viewQuiz(quiz._id)">remove_red_eye</i></a>
+            </div>
+            <button class="cursor" mat-button  color="primary"  (click)="copyLink(quiz._id)" >Copy Link</button>
+            <button class="cursor" mat-button  color="primary" (click)="checkResult(quiz._id)" >Check Result</button>
+
+        </div>
+    </div>
+</div>
+<div *ngIf="quizesList.length==0">
+    No quiz Found Please add a quiz
+</div>
