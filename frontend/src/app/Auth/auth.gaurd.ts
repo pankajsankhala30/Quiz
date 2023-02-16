@@ -10,7 +10,7 @@ export class AuthGaurd implements CanActivate {
             this.router.navigate(['/quiz']);
             return true;
         } else {
-            // this.router.navigate(['/auth/login']);
+            this.router.navigate(['/auth/login']);
             return false;
         }
     }

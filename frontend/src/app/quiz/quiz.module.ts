@@ -15,7 +15,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     QuizRoutingModule,
     MaterialModule,
     FormsModule,
-    ReactiveFormsModule,
-  ]
+    ReactiveFormsModule]
 })
 export class QuizModule { }

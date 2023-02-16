@@ -7,7 +7,6 @@ import { QuizComponent } from './quiz.component';
 import { TakeQuizComponent } from './take-quiz/take-quiz.component';
 import { ViewQuizComponent } from './view-quiz/view-quiz.component';
 
-
 const routes: Routes = [
   {
     path: '',
